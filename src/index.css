@@ -103,7 +103,7 @@
   }
 
   .partition-ele {
-    @apply bg-yellow-500;
+    @apply bg-cyan-900;
   }
 
   .correct-ele {

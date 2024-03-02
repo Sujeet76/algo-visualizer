@@ -46,9 +46,16 @@ const mergeSort = async (
   if (s < e) {
     const m = s + Math.floor((e - s) / 2);
 
+    setBGColor(arrNode[s], "partition-ele");
+    setBGColor(arrNode[m], "partition-ele");
+    await delay(delayInMilliSec / 2);
+
     // sub array 1
     await mergeSort(arrNode, delayInMilliSec, arr, s, m);
 
+    setBGColor(arrNode[m + 1], "partition-ele");
+    setBGColor(arrNode[e], "partition-ele");
+    await delay(delayInMilliSec / 2);
     // sub array 2
     await mergeSort(arrNode, delayInMilliSec, arr, m + 1, e);
 
@@ -74,37 +81,26 @@ const merge = async (
   for (let i = 0; i < n1; i++) {
     setBGColor(arrNode[l + i], "left-half");
     L[i] = arr[l + i];
+    await delay(delayInMilliSec / 5);
   }
   for (let j = 0; j < n2; j++) {
     setBGColor(arrNode[m + j + 1], "right-half");
     R[j] = arr[m + 1 + j];
+    await delay(delayInMilliSec / 5);
   }
-  await delay(delayInMilliSec * 2);
+
+  await delay(delayInMilliSec);
 
   let i = 0;
   let j = 0;
   let k = l;
-  let comI = l + 0;
-  let comJ = m + 1;
 
   while (i < n1 && j < n2) {
-    // set compare color mean these are the elements which are going to be compared
-    setBGColor(arrNode[comI], "compare-ele");
-    setBGColor(arrNode[comJ], "compare-ele");
-    await delay(delayInMilliSec);
-
-    // set swap color mean these are the elements which are going to be swapped
-    setBGColor(arrNode[comI], "swap-ele");
-    setBGColor(arrNode[comJ], "swap-ele");
-    await delay(giveMax(delayInMilliSec / 3, 300));
-
     if (L[i] <= R[j]) {
       // copy height of the elements
       copyHeight(arrNode[k], getNewHeight(L[i]));
       arr[k] = L[i];
-      // set swap color mean these are the elements which are going to be swapped
-      // setBGColor(arrNode[l + i], "left-half");
-      setBGColor(arrNode[l + i], "default-ele-bg");
+
       i++;
     } else {
       // copy height of the elements
@@ -112,35 +108,34 @@ const merge = async (
       // set swap color mean these are the elements which are going to be swapped
       arr[k] = R[j];
 
-      setBGColor(arrNode[m + j + 1], "default-ele-bg");
       j++;
     }
 
     // set sorted color mean this element is sorted mean it in its correct position
     setBGColor(arrNode[k], "sorted-ele");
-    await delay(giveMax(delayInMilliSec / 3, 300));
-    comI++;
-    comJ++;
+    await delay(giveMax(delayInMilliSec / 3, 50));
     k++;
   }
 
   while (i < n1) {
     // copy height of the elements
+    await delay(giveMax(delayInMilliSec / 3, 50));
     copyHeight(arrNode[k], getNewHeight(L[i]));
 
     arr[k] = L[i];
     setBGColor(arrNode[k], "sorted-ele");
-    await delay(giveMax(delayInMilliSec / 3, 300));
+    await delay(giveMax(delayInMilliSec / 3, 50));
     i++;
     k++;
   }
 
   while (j < n2) {
+    await delay(giveMax(delayInMilliSec / 3, 50));
     copyHeight(arrNode[k], getNewHeight(R[j]));
 
     arr[k] = R[j];
-    setBGColor(arrNode[l], "sorted-ele");
-    await delay(giveMax(delayInMilliSec / 3, 300));
+    setBGColor(arrNode[k], "sorted-ele");
+    await delay(giveMax(delayInMilliSec / 3, 50));
     j++;
     k++;
   }
