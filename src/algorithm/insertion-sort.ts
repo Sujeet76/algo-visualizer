@@ -1,4 +1,4 @@
-import { setBGColor, delay } from "@/lib/utils";
+import { setBGColor, delay, cssClassNames, giveMax } from "@/lib/utils";
 
 const copyHeight = (ele1: HTMLElement, ele2: HTMLElement | string) => {
   if (typeof ele2 === "string") {
@@ -8,6 +8,14 @@ const copyHeight = (ele1: HTMLElement, ele2: HTMLElement | string) => {
   ele1.style.height = ele2.style.height;
 };
 
+/**
+ * Visualizes the insertion sort algorithm on an array of numbers.
+ *
+ * @param arr - The array of numbers to be sorted.
+ * @param delayMilliSec - The delay in milliseconds between each step of the sorting process.
+ * @param setArray - A function to update the state with the sorted array.
+ * @param setIsSorting - A function to update the state indicating whether the sorting is in progress.
+ */
 const visualizeInsertionSort = async (
   arr: number[],
   delayMilliSec: number,
@@ -32,41 +40,41 @@ const visualizeInsertionSort = async (
     // eslint-disable-next-line no-constant-condition
     while (true) {
       if (j < 0) break;
-      setBGColor(arrNode[i], "compare-ele");
-      setBGColor(arrNode[j], "compare-ele");
+      setBGColor(arrNode[i], cssClassNames["compare-ele"]);
+      setBGColor(arrNode[j], cssClassNames["compare-ele"]);
       await delay(delayMilliSec);
       if (arr[j] <= key) {
-        setBGColor(arrNode[j], "default-ele-bg");
-        setBGColor(arrNode[i], "default-ele-bg");
+        setBGColor(arrNode[j], cssClassNames["default-ele-bg"]);
+        setBGColor(arrNode[i], cssClassNames["default-ele-bg"]);
         break;
       }
 
       setBGColor(arrNode[j], "swap-ele");
       setBGColor(arrNode[j + 1], "swap-ele");
-      await delay(Math.max(delayMilliSec / 3, 100));
+      await delay(giveMax(delayMilliSec / 3, 100));
 
       copyHeight(arrNode[j + 1], arrNode[j]);
 
-      setBGColor(arrNode[j], "default-ele-bg");
-      setBGColor(arrNode[j + 1], "default-ele-bg");
+      setBGColor(arrNode[j], cssClassNames["default-ele-bg"]);
+      setBGColor(arrNode[j + 1], cssClassNames["default-ele-bg"]);
 
       arr[j + 1] = arr[j];
       j -= 1;
     }
 
     // setBGColor(arrNode[i + 2], "swap-ele");
-    setBGColor(arrNode[j + 1], "correct-ele");
-    await delay(Math.max(delayMilliSec / 3, 100));
+    setBGColor(arrNode[j + 1], cssClassNames["correct-ele"]);
+    await delay(giveMax(delayMilliSec / 3, 100));
     copyHeight(arrNode[j + 1], keyH);
 
     arr[j + 1] = key;
 
     while (k >= 0) {
-      setBGColor(arrNode[k], "sorted-ele");
+      setBGColor(arrNode[k], cssClassNames["sorted-ele"]);
       k--;
     }
   }
-  setBGColor(arrNode[arr.length - 1], "sorted-ele");
+  setBGColor(arrNode[arr.length - 1], cssClassNames["sorted-ele"]);
 
   setIsSorting(false);
   setArray(arr);

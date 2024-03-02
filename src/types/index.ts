@@ -7,6 +7,21 @@ export type SortingAlgoType =
   | "merge"
   | "quick";
 
+export type cssUtilName =
+  | "default-ele-bg"
+  | "compare-ele"
+  | "key-ele"
+  | "swap-ele"
+  | "left-half"
+  | "right-half"
+  | "partition-ele"
+  | "correct-ele"
+  | "sorted-ele";
+
+export type cssClassNameType = {
+  [key in cssUtilName]: key;
+};
+
 export type AlgoInfo = {
   title: string;
   description: string;

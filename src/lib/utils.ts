@@ -2,13 +2,29 @@ import visualizeBubbleSort from "@/algorithm/bubble-sort";
 import visualizeInsertionSort from "@/algorithm/insertion-sort";
 import visualizeMergeSort from "@/algorithm/merge-sort";
 import visualizeSelectionSort from "@/algorithm/selection-sort";
-import { SortingAlgoType } from "@/types";
+import { SortingAlgoType, cssClassNameType, cssUtilName } from "@/types";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export const cssClassNames: cssClassNameType = {
+  "default-ele-bg": "default-ele-bg",
+  "compare-ele": "compare-ele",
+  "key-ele": "key-ele",
+  "swap-ele": "swap-ele",
+  "left-half": "left-half",
+  "right-half": "right-half",
+  "partition-ele": "partition-ele",
+  "correct-ele": "correct-ele",
+  "sorted-ele": "sorted-ele",
+};
+
+const removeObjVal = (cssClassName: cssClassNameType, t: cssUtilName) => {
+  return Object.values(cssClassName).filter((className) => className !== t);
+};
 
 export const generateRandomArray = (length: number) => {
   const array = [];
@@ -24,125 +40,72 @@ export const swapHeight = (ele1: HTMLElement, ele2: HTMLElement) => {
   ele2.style.height = temp;
 };
 
-export const setBGColor = (ele: HTMLElement, color: string) => {
+export const setBGColor = (ele: HTMLElement, color: cssUtilName) => {
+  console.log(...removeObjVal(cssClassNames, cssClassNames[color]));
   switch (color) {
-    case "compare-ele":
-      ele.classList.add("compare-ele");
+    case cssClassNames["compare-ele"]:
+      ele.classList.add(cssClassNames["compare-ele"]);
       ele.classList.remove(
-        "default-ele-bg",
-        "swap-ele",
-        "sorted-ele",
-        "key-ele",
-        "correct-ele",
-        "partition-ele",
-        "left-half",
-        "right-half"
+        ...removeObjVal(cssClassNames, cssClassNames["compare-ele"])
       );
       break;
-    case "default-ele-bg":
-      ele.classList.add("default-ele-bg");
+
+    case cssClassNames["default-ele-bg"]:
+      ele.classList.add(cssClassNames["default-ele-bg"]);
       ele.classList.remove(
-        "compare-ele",
-        "swap-ele",
-        "sorted-ele",
-        "key-ele",
-        "correct-ele",
-        "partition-ele",
-        "left-half",
-        "right-half"
+        ...removeObjVal(cssClassNames, cssClassNames["default-ele-bg"])
       );
       break;
-    case "sorted-ele":
-      ele.classList.add("sorted-ele");
+
+    case cssClassNames["sorted-ele"]:
+      ele.classList.add(cssClassNames["sorted-ele"]);
       ele.classList.remove(
-        "default-ele-bg",
-        "compare-ele",
-        "swap-ele",
-        "key-ele",
-        "correct-ele",
-        "partition-ele",
-        "left-half",
-        "right-half"
+        ...removeObjVal(cssClassNames, cssClassNames["sorted-ele"])
       );
       break;
-    case "swap-ele":
-      ele.classList.add("swap-ele");
+
+    case cssClassNames["swap-ele"]:
+      ele.classList.add(cssClassNames["swap-ele"]);
       ele.classList.remove(
-        "default-ele-bg",
-        "compare-ele",
-        "sorted-ele",
-        "key-ele",
-        "correct-ele",
-        "partition-ele",
-        "left-half",
-        "right-half"
+        ...removeObjVal(cssClassNames, cssClassNames["swap-ele"])
       );
       break;
-    case "key-ele":
-      ele.classList.add("key-ele");
+
+    case cssClassNames["key-ele"]:
+      ele.classList.add(cssClassNames["key-ele"]);
       ele.classList.remove(
-        "default-ele-bg",
-        "compare-ele",
-        "sorted-ele",
-        "swap-ele",
-        "correct-ele",
-        "partition-ele",
-        "left-half",
-        "right-half"
+        ...removeObjVal(cssClassNames, cssClassNames["key-ele"])
       );
       break;
-    case "correct-ele":
-      ele.classList.add("correct-ele");
+
+    case cssClassNames["correct-ele"]:
+      ele.classList.add(cssClassNames["correct-ele"]);
       ele.classList.remove(
-        "default-ele-bg",
-        "compare-ele",
-        "sorted-ele",
-        "swap-ele",
-        "key-ele",
-        "partition-ele",
-        "left-half",
-        "right-half"
+        ...removeObjVal(cssClassNames, cssClassNames["correct-ele"])
       );
       break;
-    case "partition-ele":
-      ele.classList.add("partition-ele");
+
+    case cssClassNames["partition-ele"]:
+      ele.classList.add(cssClassNames["partition-ele"]);
       ele.classList.remove(
-        "default-ele-bg",
-        "compare-ele",
-        "sorted-ele",
-        "swap-ele",
-        "key-ele",
-        "correct-ele",
-        "left-half",
-        "right-half"
+        ...removeObjVal(cssClassNames, cssClassNames["partition-ele"])
       );
       break;
-    case "left-half":
-      ele.classList.add("left-half");
+
+    case cssClassNames["left-half"]:
+      ele.classList.add(cssClassNames["left-half"]);
       ele.classList.remove(
-        "default-ele-bg",
-        "compare-ele",
-        "sorted-ele",
-        "swap-ele",
-        "key-ele",
-        "correct-ele",
-        "right-half",
-        "partition-ele"
+        ...removeObjVal(cssClassNames, cssClassNames["left-half"])
       );
       break;
-    case "right-half":
-      ele.classList.add("right-half");
+
+    case cssClassNames["right-half"]:
+      ele.classList.add(cssClassNames["right-half"]);
       ele.classList.remove(
-        "default-ele-bg",
-        "compare-ele",
-        "sorted-ele",
-        "swap-ele",
-        "key-ele",
-        "correct-ele",
-        "partition-ele",
-        "left-half"
+        ...removeObjVal(cssClassNames, cssClassNames["right-half"])
       );
       break;
+
     default:
       break;
   }
