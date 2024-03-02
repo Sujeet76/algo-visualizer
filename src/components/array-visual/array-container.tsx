@@ -37,21 +37,23 @@ const ArrayContainer: React.FC = () => {
       <div className='w-full h-full relative'>
         {/* represent array into line bar */}
         <div>Hello </div>
-        <div className='flex items-center justify-center gap-3 h-full pb-6'>
-          <AnimatePresence>
-            {array.map((ele, i) => {
-              const height = calcHeight(ele);
+        <div className='h-full pb-6'>
+          <div className='flex items-center justify-center gap-3 h-full'>
+            <AnimatePresence>
+              {array.map((ele, i) => {
+                const height = calcHeight(ele);
 
-              return (
-                <LineBar
-                  key={i}
-                  arrElement={ele}
-                  barWidth={barWidth}
-                  barHeight={height}
-                />
-              );
-            })}
-          </AnimatePresence>
+                return (
+                  <LineBar
+                    key={i}
+                    arrElement={ele}
+                    barWidth={barWidth}
+                    barHeight={height}
+                  />
+                );
+              })}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </GridBackground>
