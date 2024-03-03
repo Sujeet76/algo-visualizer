@@ -1,4 +1,4 @@
-import { SelectOptionType, SortingAlgoType } from "@/types";
+import { ColorInfoType, SelectOptionType, SortingAlgoType } from "@/types";
 
 export const DEFAULT_ARRAY_LENGTH = 20;
 export const DEFAULT_SPEED = 400;
@@ -53,4 +53,125 @@ export const sortingAlgoData = {
     averageCase: "O(n log n)",
     bestCase: "O(n log n)",
   },
+};
+
+export const colorsInfo: ColorInfoType = {
+  bubble: [
+    {
+      color: "compare-ele",
+      label: "Element is being compared",
+    },
+    {
+      color: "swap-ele",
+      label: "Element is being swapped",
+    },
+    {
+      color: "sorted-ele",
+      label: "sorted element",
+    },
+    {
+      color: "default-ele-bg",
+      label: "unsorted element",
+    },
+  ],
+  insertion: [
+    {
+      color: "compare-ele",
+      label: "Element is being compared",
+    },
+    {
+      color: "swap-ele",
+      label: "Element is being copied",
+    },
+    {
+      color: "sorted-ele",
+      label: "sorted element",
+    },
+    {
+      color: "default-ele-bg",
+      label: "unsorted element",
+    },
+  ],
+  selection: [
+    {
+      color: "compare-ele",
+      label: "Element is being compared",
+    },
+    {
+      color: "swap-ele",
+      label: "Element is being swapped",
+    },
+    {
+      color: "sorted-ele",
+      label: "sorted element",
+    },
+    {
+      color: "default-ele-bg",
+      label: "unsorted element",
+    },
+    {
+      color: "key-ele",
+      label: "smallest element",
+    },
+  ],
+  quick: [
+    {
+      color: "compare-ele",
+      label: "Element is being compared",
+    },
+    {
+      color: "swap-ele",
+      label: "Element is being swapped",
+    },
+    {
+      color: "sorted-ele",
+      label: "sorted element",
+    },
+    {
+      color: "default-ele-bg",
+      label: "unsorted element",
+    },
+    {
+      color: "key-ele",
+      label: "Pivot element",
+    },
+    {
+      color: "left-half",
+      label: "element less than pivot",
+    },
+    {
+      color: "right-half",
+      label: "element greater than pivot",
+    },
+  ],
+  merge: [
+    {
+      color: "compare-ele",
+      label: "Element is being compared",
+    },
+    {
+      color: "swap-ele",
+      label: "Element is being swapped",
+    },
+    {
+      color: "sorted-ele",
+      label: "sorted element",
+    },
+    {
+      color: "default-ele-bg",
+      label: "unsorted element",
+    },
+    {
+      color: "partition-ele",
+      label: "Partition boundary",
+    },
+    {
+      color: "left-half",
+      label: "Left half",
+    },
+    {
+      color: "right-half",
+      label: "Right half",
+    },
+  ],
 };

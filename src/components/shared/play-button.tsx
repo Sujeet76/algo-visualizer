@@ -3,9 +3,13 @@ import { Button } from "../ui/button";
 import { PlayCircle, RotateCcw } from "lucide-react";
 import { PauseCircle } from "lucide-react";
 import { useSortVisualizer } from "@/context/visualizer-context";
-import { animation } from "@/lib/utils";
+import { animation, cn } from "@/lib/utils";
 
-const PlayButton: React.FC = () => {
+interface PlayButtonProps {
+  className?: string;
+}
+
+const PlayButton: React.FC<PlayButtonProps> = ({ className }) => {
   const {
     isSorting,
     array,
@@ -22,7 +26,7 @@ const PlayButton: React.FC = () => {
   };
 
   return (
-    <div className='lg:flex md:flex hidden gap-2'>
+    <div className={cn("lg:flex md:flex hidden gap-2", className)}>
       <Button
         className='gap-2'
         disabled={isSorting}

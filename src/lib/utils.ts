@@ -42,7 +42,6 @@ export const swapHeight = (ele1: HTMLElement, ele2: HTMLElement) => {
 };
 
 export const setBGColor = (ele: HTMLElement, color: cssUtilName) => {
-  console.log(...removeObjVal(cssClassNames, cssClassNames[color]));
   switch (color) {
     case cssClassNames["compare-ele"]:
       ele.classList.add(cssClassNames["compare-ele"]);

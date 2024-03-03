@@ -4,12 +4,12 @@ import LeftSideBar from "@/components/navbar/leftSide-bar";
 
 export default function App() {
   return (
-    <>
+    <div className='h-dvh'>
       <Navbar />
-      <div className='flex'>
+      <div className='flex h-[calc(100dvh-4rem)]'>
         <LeftSideBar />
         <ArrayContainer />
       </div>
-    </>
+    </div>
   );
 }

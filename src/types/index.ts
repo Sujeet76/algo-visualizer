@@ -41,6 +41,13 @@ export type SelectOptionType = {
 
 export type AnimationArrayType = [number[], boolean][];
 
+export type ColorInfoType = {
+  [key in SortingAlgoType]: {
+    color: cssUtilName;
+    label: string;
+  }[];
+};
+
 // context types
 export type VisualizerProviderProps = {
   children: ReactNode;

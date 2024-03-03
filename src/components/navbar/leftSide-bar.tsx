@@ -60,10 +60,10 @@ const LeftSideBar = () => {
 
   return (
     <motion.aside
-      className='h-[calc(100dvh-4.5rem)] lg:relative md:relative  lg:top-0 lg:left-0 md:top-0 md:left-0 fixed inset-0 top-[4.5rem] lg:z-auto md:z-auto z-50'
+      className='h-[calc(100dvh-4rem)] lg:relative md:relative  lg:top-0 lg:left-0 md:top-0 md:left-0 fixed inset-0 top-[4rem] lg:z-auto md:z-auto z-50'
       animate={{
         width: isMobile ? "100%" : isSidebarOpen ? SIDEBAR_WIDTH : 0,
-        x: isMobile ? (!isSidebarOpen ? 0 : "-100%") : 0,
+        x: isMobile ? (isSidebarOpen ? 0 : "-100%") : 0,
       }}
       transition={{
         type: "tween",
@@ -78,7 +78,7 @@ const LeftSideBar = () => {
         <ChevronLeftCircle className='text-zinc-200 size-8' />
       </motion.button>
 
-      <ScrollArea className='w-full h-[calc(100dvh-4.5rem)] border-r dark:border-gray-600 border-gray-300 dark:bg-zinc-900  bg-zinc-100 px-3'>
+      <ScrollArea className='w-full h-[calc(100dvh-4rem)] border-r dark:border-gray-600 border-gray-300 dark:bg-zinc-900  bg-zinc-100 px-3'>
         <div className='flex flex-col gap-5 mt-6'>
           {/* slider to change the speed */}
           <div className='space-y-4'>

@@ -1,11 +1,20 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import GridBackground from "../grid-bg";
 import { useSortVisualizer } from "@/context/visualizer-context";
 import LineBar from "./line-bar";
+import PlayButton from "../shared/play-button";
+import { colorsInfo } from "@/lib/utils/constants";
+import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 const ArrayContainer: React.FC = () => {
-  const { array } = useSortVisualizer();
+  const { array, sortingAlgoName } = useSortVisualizer();
   const [barWidth, setBarWidth] = useState(0);
 
   const maxElement = Math.max(...array);
@@ -34,10 +43,30 @@ const ArrayContainer: React.FC = () => {
 
   return (
     <GridBackground>
-      <div className='w-full h-full relative'>
+      <div className='flex flex-col gap-2 w-full h-full relative'>
         {/* represent array into line bar */}
-        <div>Hello </div>
-        <div className='h-full pb-6'>
+        <div className='flex gap-4 w-full justify-center items-center lg:w-fit lg:ml-auto md:w-fit md:ml-auto flex-wrap-reverse mb-2'>
+          <div className='flex gap-2 items-center'>
+            {colorsInfo[sortingAlgoName].map(({ color, label }) => (
+              <DropdownMenu key={color}>
+                <DropdownMenuTrigger asChild>
+                  <div
+                    key={label}
+                    className={cn(
+                      "size-6 rounded-full border-2 border-white cursor-pointer",
+                      color
+                    )}
+                  />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>{label}</DropdownMenuLabel>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ))}
+          </div>
+          <PlayButton className='lg:hidden md:hidden flex' />
+        </div>
+        <div className='flex-1'>
           <div className='flex items-center justify-center gap-1 h-full'>
             <AnimatePresence>
               {array.map((ele, i) => {
