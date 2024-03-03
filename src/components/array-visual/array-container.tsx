@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import GridBackground from "../grid-bg";
-import { useSortVisualizer } from "@/context/visualizerUtils";
+import { useSortVisualizer } from "@/context/visualizer-context";
 import LineBar from "./line-bar";
 
 const ArrayContainer: React.FC = () => {
@@ -38,7 +38,7 @@ const ArrayContainer: React.FC = () => {
         {/* represent array into line bar */}
         <div>Hello </div>
         <div className='h-full pb-6'>
-          <div className='flex items-center justify-center gap-3 h-full'>
+          <div className='flex items-center justify-center gap-1 h-full'>
             <AnimatePresence>
               {array.map((ele, i) => {
                 const height = calcHeight(ele);

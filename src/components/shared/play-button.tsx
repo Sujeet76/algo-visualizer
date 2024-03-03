@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import { PlayCircle, RotateCcw } from "lucide-react";
 import { PauseCircle } from "lucide-react";
-import { useSortVisualizer } from "@/context/visualizerUtils";
+import { useSortVisualizer } from "@/context/visualizer-context";
 import { animation } from "@/lib/utils";
 
 const PlayButton: React.FC = () => {
@@ -22,7 +22,7 @@ const PlayButton: React.FC = () => {
   };
 
   return (
-    <div className='flex gap-2'>
+    <div className='lg:flex md:flex hidden gap-2'>
       <Button
         className='gap-2'
         disabled={isSorting}

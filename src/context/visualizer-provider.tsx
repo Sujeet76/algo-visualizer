@@ -1,6 +1,6 @@
 import { SortingAlgoType } from "@/types";
 import { ReactNode, useState } from "react";
-import { VisualizerContext } from "./visualizerUtils";
+import { VisualizerContext } from "./visualizer-context";
 import { generateRandomArray } from "@/lib/utils";
 import {
   DEFAULT_ALGO_NAME,

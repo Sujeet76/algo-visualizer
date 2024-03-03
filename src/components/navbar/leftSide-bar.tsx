@@ -30,7 +30,8 @@ import { algoOptions, sortingAlgoData } from "@/lib/utils/constants";
 
 // utils import
 import { cn } from "@/lib/utils";
-import { useSortVisualizer } from "@/context/visualizerUtils";
+import { useSortVisualizer } from "@/context/visualizer-context";
+import useSidebar from "@/context/sidebar-context";
 
 const SIDEBAR_WIDTH = 290;
 
@@ -45,7 +46,7 @@ const LeftSideBar = () => {
     setSortingAlgoName,
   } = useSortVisualizer();
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const { isSidebarOpen, toggleSidebar, isMobile } = useSidebar();
   const [input, setInput] = useState(array.join(","));
   const [open, setOpen] = useState(false);
 
@@ -59,16 +60,19 @@ const LeftSideBar = () => {
 
   return (
     <motion.aside
-      className='h-[calc(100dvh-4.5rem)] relative'
-      animate={{ width: isSidebarOpen ? SIDEBAR_WIDTH : 0 }}
+      className='h-[calc(100dvh-4.5rem)] lg:relative md:relative  lg:top-0 lg:left-0 md:top-0 md:left-0 fixed inset-0 top-[4.5rem] lg:z-auto md:z-auto z-50'
+      animate={{
+        width: isMobile ? "100%" : isSidebarOpen ? SIDEBAR_WIDTH : 0,
+        x: isMobile ? (!isSidebarOpen ? 0 : "-100%") : 0,
+      }}
       transition={{
         type: "tween",
       }}
     >
       <motion.button
         role='button'
-        className='absolute top-4 -right-[20px] z-50 bg-white dark:bg-zinc-700 dark:text-zinc-200 p-1 rounded-full shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-50'
-        onClick={() => setIsSidebarOpen((prev) => !prev)}
+        className='absolute top-4 -right-[20px] z-50 bg-white dark:bg-zinc-700 dark:text-zinc-200 p-1 rounded-full shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-50 hidden lg:block md:block'
+        onClick={() => toggleSidebar()}
         whileTap={{ scale: 0.9 }}
       >
         <ChevronLeftCircle className='text-zinc-200 size-8' />
