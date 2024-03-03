@@ -1,4 +1,4 @@
-import { setBGColor, delay, cssClassNames, giveMax } from "@/lib/utils";
+import { setBGColor, delay, giveMax } from "@/lib/utils";
 
 const copyHeight = (ele1: HTMLElement, ele2: HTMLElement | string) => {
   if (typeof ele2 === "string") {
@@ -40,12 +40,12 @@ const visualizeInsertionSort = async (
     // eslint-disable-next-line no-constant-condition
     while (true) {
       if (j < 0) break;
-      setBGColor(arrNode[i], cssClassNames["compare-ele"]);
-      setBGColor(arrNode[j], cssClassNames["compare-ele"]);
+      setBGColor(arrNode[i], "compare-ele");
+      setBGColor(arrNode[j], "compare-ele");
       await delay(delayMilliSec);
       if (arr[j] <= key) {
-        setBGColor(arrNode[j], cssClassNames["default-ele-bg"]);
-        setBGColor(arrNode[i], cssClassNames["default-ele-bg"]);
+        setBGColor(arrNode[j], "default-ele-bg");
+        setBGColor(arrNode[i], "default-ele-bg");
         break;
       }
 
@@ -55,26 +55,26 @@ const visualizeInsertionSort = async (
 
       copyHeight(arrNode[j + 1], arrNode[j]);
 
-      setBGColor(arrNode[j], cssClassNames["default-ele-bg"]);
-      setBGColor(arrNode[j + 1], cssClassNames["default-ele-bg"]);
+      setBGColor(arrNode[j], "default-ele-bg");
+      setBGColor(arrNode[j + 1], "default-ele-bg");
 
       arr[j + 1] = arr[j];
       j -= 1;
     }
 
     // setBGColor(arrNode[i + 2], "swap-ele");
-    setBGColor(arrNode[j + 1], cssClassNames["correct-ele"]);
+    setBGColor(arrNode[j + 1], "correct-ele");
     await delay(giveMax(delayMilliSec / 3, 100));
     copyHeight(arrNode[j + 1], keyH);
 
     arr[j + 1] = key;
 
     while (k >= 0) {
-      setBGColor(arrNode[k], cssClassNames["sorted-ele"]);
+      setBGColor(arrNode[k], "sorted-ele");
       k--;
     }
   }
-  setBGColor(arrNode[arr.length - 1], cssClassNames["sorted-ele"]);
+  setBGColor(arrNode[arr.length - 1], "sorted-ele");
 
   setIsSorting(false);
   setArray(arr);

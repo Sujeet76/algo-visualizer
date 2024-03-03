@@ -27,16 +27,18 @@ const PlayButton: React.FC = () => {
         className='gap-2'
         disabled={isSorting}
         onClick={handelClick}
+        whileTap={{ scale: 0.9 }}
       >
         {isSorting ? <PauseCircle /> : <PlayCircle />}
         <span>Play</span>
       </Button>
       <Button
-        className='gap-2 group hover:scale-95 transition-all'
+        className='gap-2'
         disabled={requiresReset}
         onClick={() => generateArray()}
+        whileTap={{ scale: 0.9 }} // Remove rotate property from whileTap animation
       >
-        <RotateCcw className='group-hover:rotate-180 transition-all' />
+        <RotateCcw />
         <span>Regenerate array</span>
       </Button>
     </div>

@@ -1,4 +1,4 @@
-import { cssClassNames, delay, giveMax, setBGColor } from "@/lib/utils";
+import { delay, giveMax, setBGColor } from "@/lib/utils";
 
 const copyHeight = (ele1: HTMLElement, ele2: HTMLElement | string) => {
   if (typeof ele2 === "string") {
@@ -64,16 +64,16 @@ const mergeSort = async (
     const m = s + Math.floor((e - s) / 2);
 
     // set partition color mean these are the elements which are going to be partitioned
-    setBGColor(arrNode[s], cssClassNames["partition-ele"]);
-    setBGColor(arrNode[m], cssClassNames["partition-ele"]);
+    setBGColor(arrNode[s], "partition-ele");
+    setBGColor(arrNode[m], "partition-ele");
     await delay(delayInMilliSec / 2);
 
     // sub array 1
     await mergeSort(arrNode, delayInMilliSec, arr, s, m);
 
     // set partition color mean these are the elements which are going to be partitioned
-    setBGColor(arrNode[m + 1], cssClassNames["partition-ele"]);
-    setBGColor(arrNode[e], cssClassNames["partition-ele"]);
+    setBGColor(arrNode[m + 1], "partition-ele");
+    setBGColor(arrNode[e], "partition-ele");
     await delay(delayInMilliSec / 2);
     // sub array 2
     await mergeSort(arrNode, delayInMilliSec, arr, m + 1, e);
@@ -107,18 +107,18 @@ const merge = async (
   const R = new Array<number>(n2);
 
   // TODO : display these copy of array on DOM(HTML) for better visualization
-  // ADD : setBGColor(arrNode[l + i], cssClassNames["sorted-ele"]);
+  // ADD : setBGColor(arrNode[l + i], "sorted-ele");
 
   for (let i = 0; i < n1; i++) {
     // set left half color mean these are the elements which are going to be merged
-    setBGColor(arrNode[l + i], cssClassNames["left-half"]);
+    setBGColor(arrNode[l + i], "left-half");
 
     L[i] = arr[l + i];
     await delay(delayInMilliSec / 5);
   }
   for (let j = 0; j < n2; j++) {
     // set right half color mean these are the elements which are going to be merged
-    setBGColor(arrNode[m + j + 1], cssClassNames["right-half"]);
+    setBGColor(arrNode[m + j + 1], "right-half");
 
     R[j] = arr[m + 1 + j];
     await delay(delayInMilliSec / 5);
@@ -148,7 +148,7 @@ const merge = async (
     }
 
     // set sorted color mean this element is sorted mean it in its correct position
-    setBGColor(arrNode[k], cssClassNames["sorted-ele"]);
+    setBGColor(arrNode[k], "sorted-ele");
     await delay(giveMax(delayInMilliSec / 3, 50));
     k++;
   }
@@ -159,7 +159,7 @@ const merge = async (
     copyHeight(arrNode[k], getNewHeight(L[i]));
 
     arr[k] = L[i];
-    setBGColor(arrNode[k], cssClassNames["sorted-ele"]);
+    setBGColor(arrNode[k], "sorted-ele");
     await delay(giveMax(delayInMilliSec / 3, 50));
     i++;
     k++;
@@ -170,7 +170,7 @@ const merge = async (
     copyHeight(arrNode[k], getNewHeight(R[j]));
 
     arr[k] = R[j];
-    setBGColor(arrNode[k], cssClassNames["sorted-ele"]);
+    setBGColor(arrNode[k], "sorted-ele");
     await delay(giveMax(delayInMilliSec / 3, 50));
     j++;
     k++;

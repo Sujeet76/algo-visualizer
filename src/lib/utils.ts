@@ -1,6 +1,7 @@
 import visualizeBubbleSort from "@/algorithm/bubble-sort";
 import visualizeInsertionSort from "@/algorithm/insertion-sort";
 import visualizeMergeSort from "@/algorithm/merge-sort";
+import visualizeQuickSort from "@/algorithm/quick-sort";
 import visualizeSelectionSort from "@/algorithm/selection-sort";
 import { SortingAlgoType, cssClassNameType, cssUtilName } from "@/types";
 import { type ClassValue, clsx } from "clsx";
@@ -151,6 +152,9 @@ export const animation = async (
       break;
     case "merge":
       await visualizeMergeSort(tempArr, delay, setArray, setIsSorting);
+      break;
+    case "quick":
+      await visualizeQuickSort(tempArr, delay, setArray, setIsSorting);
       break;
     default:
       console.error("Invalid sorting algo name");

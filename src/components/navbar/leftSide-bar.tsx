@@ -65,13 +65,14 @@ const LeftSideBar = () => {
         type: "tween",
       }}
     >
-      <button
+      <motion.button
         role='button'
         className='absolute top-4 -right-[20px] z-50 bg-white dark:bg-zinc-700 dark:text-zinc-200 p-1 rounded-full shadow-md transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-50'
         onClick={() => setIsSidebarOpen((prev) => !prev)}
+        whileTap={{ scale: 0.9 }}
       >
         <ChevronLeftCircle className='text-zinc-200 size-8' />
-      </button>
+      </motion.button>
 
       <ScrollArea className='w-full h-[calc(100dvh-4.5rem)] border-r dark:border-gray-600 border-gray-300 dark:bg-zinc-900  bg-zinc-100 px-3'>
         <div className='flex flex-col gap-5 mt-6'>
