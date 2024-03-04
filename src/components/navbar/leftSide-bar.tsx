@@ -44,6 +44,7 @@ const LeftSideBar = () => {
     setArray,
     sortingAlgoName,
     setSortingAlgoName,
+    ref,
   } = useSortVisualizer();
 
   const { isSidebarOpen, toggleSidebar, isMobile } = useSidebar();
@@ -104,6 +105,7 @@ const LeftSideBar = () => {
               className=' focus:outline-none focus:right-2 dark:focus:ring-white focus:ring-black'
               onChange={(e) => setInput(e.target.value)}
               disabled={isSorting}
+              ref={ref}
             />
             {array.length > 0 && (
               <Badge className='!mt-4'>
@@ -150,10 +152,8 @@ const LeftSideBar = () => {
                         value={algo.value}
                         onSelect={(currentValue) => {
                           console.log(currentValue);
-                          setSortingAlgoName(
-                            // @ts-expect-error: currentValue is intentionally assigned to value and it's by default is SortingAlgoType
-                            currentValue === sortingAlgoName ? "" : currentValue
-                          );
+                          // @ts-expect-error we are confirm that currentValue is of SortingAlgoName type not string;
+                          setSortingAlgoName(currentValue);
                           setOpen(false);
                         }}
                       >

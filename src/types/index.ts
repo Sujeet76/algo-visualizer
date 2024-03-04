@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { MutableRefObject, ReactNode } from "react";
 
 export type SortingAlgoType =
   | "bubble"
@@ -63,4 +63,5 @@ export type VisualizerProviderProps = {
   setSortingAlgoName: (algo: SortingAlgoType) => void;
   setSpeed: (speed: number[]) => void;
   generateArray: (length?: number) => void;
+  ref: MutableRefObject<HTMLTextAreaElement | null>;
 };

@@ -16,7 +16,7 @@ const visualizeSelectionSort = async (
   for (let i = 0; i < arr.length - 1; i++) {
     let min_idx = i;
     setBGColor(arrNode[i], "key-ele");
-    await delay(giveMax(delayMilliSec / 3, 100));
+    await delay(giveMax(delayMilliSec / 3, 50));
 
     for (let j = i + 1; j < arr.length; j++) {
       setBGColor(arrNode[j], "compare-ele");
@@ -30,12 +30,12 @@ const visualizeSelectionSort = async (
       }
       setBGColor(arrNode[j], "default-ele-bg");
       setBGColor(arrNode[min_idx], "key-ele");
-      await delay(giveMax(delayMilliSec / 3, 100));
+      await delay(giveMax(delayMilliSec / 3, 50));
     }
 
     setBGColor(arrNode[min_idx], "swap-ele");
     setBGColor(arrNode[i], "swap-ele");
-    await delay(giveMax(delayMilliSec / 3, 100));
+    await delay(giveMax(delayMilliSec / 3, 50));
     swapHeight(arrNode[i], arrNode[min_idx]);
     [arr[i], arr[min_idx]] = [arr[min_idx], arr[i]];
     setBGColor(arrNode[min_idx], "default-ele-bg");

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+
 import GridBackground from "../grid-bg";
 import { useSortVisualizer } from "@/context/visualizer-context";
 import LineBar from "./line-bar";
@@ -16,6 +17,8 @@ import {
 const ArrayContainer: React.FC = () => {
   const { array, sortingAlgoName } = useSortVisualizer();
   const [barWidth, setBarWidth] = useState(0);
+
+  console.log({ sortingAlgoName });
 
   const maxElement = Math.max(...array);
 
@@ -50,12 +53,13 @@ const ArrayContainer: React.FC = () => {
             {colorsInfo[sortingAlgoName].map(({ color, label }) => (
               <DropdownMenu key={color}>
                 <DropdownMenuTrigger asChild>
-                  <div
+                  <motion.div
                     key={label}
                     className={cn(
-                      "size-6 rounded-full border-2 border-white cursor-pointer",
+                      "size-7 rounded-full border-2 dark:border-white border-gray-700 cursor-pointer",
                       color
                     )}
+                    whileTap={{ scale: 0.9 }}
                   />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>

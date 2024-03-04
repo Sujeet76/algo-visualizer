@@ -51,7 +51,7 @@ const visualizeInsertionSort = async (
 
       setBGColor(arrNode[j], "swap-ele");
       setBGColor(arrNode[j + 1], "swap-ele");
-      await delay(giveMax(delayMilliSec / 3, 100));
+      await delay(giveMax(delayMilliSec / 3, 50));
 
       copyHeight(arrNode[j + 1], arrNode[j]);
 
@@ -64,7 +64,7 @@ const visualizeInsertionSort = async (
 
     // setBGColor(arrNode[i + 2], "swap-ele");
     setBGColor(arrNode[j + 1], "correct-ele");
-    await delay(giveMax(delayMilliSec / 3, 100));
+    await delay(giveMax(delayMilliSec / 3, 50));
     copyHeight(arrNode[j + 1], keyH);
 
     arr[j + 1] = key;

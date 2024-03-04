@@ -1,5 +1,5 @@
 import { SortingAlgoType } from "@/types";
-import { ReactNode, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { VisualizerContext } from "./visualizer-context";
 import { generateRandomArray } from "@/lib/utils";
 import {
@@ -12,6 +12,8 @@ export function VisualizerProvider({ children }: { children: ReactNode }) {
   const [isSorting, setIsSorting] = useState(false);
 
   const [isSorted, setIsSorted] = useState(false);
+
+  const ref = useRef<HTMLTextAreaElement | null>(null);
 
   const [array, setArray] = useState<number[]>(
     generateRandomArray(DEFAULT_ARRAY_LENGTH)
@@ -34,6 +36,7 @@ export function VisualizerProvider({ children }: { children: ReactNode }) {
     }
 
     setArray(generateRandomArray(length));
+    if (ref.current) ref.current.value = array.join(", ");
   };
 
   const requiresReset = isSorting || isSorted;
@@ -52,6 +55,7 @@ export function VisualizerProvider({ children }: { children: ReactNode }) {
     setIsSorted,
     setSortingAlgoName,
     generateArray,
+    ref,
   };
   return (
     <VisualizerContext.Provider value={value}>

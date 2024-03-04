@@ -104,7 +104,7 @@ const partition = async (
       // set bg color of swap elements
       setBGColor(arrNode[i], "swap-ele");
       setBGColor(arrNode[j], "swap-ele");
-      await delay(giveMax(delayMilliSec / 3, 300));
+      await delay(giveMax(delayMilliSec / 3, 50));
 
       // swap arr[i] and arr[j] height
       swapHeight(arrNode[i], arrNode[j]);
@@ -120,14 +120,14 @@ const partition = async (
 
     // set key-ele bg color means that this is a pivot element
     setBGColor(arrNode[heigh], "key-ele");
-    await delay(giveMax(delayMilliSec / 3, 300));
+    await delay(giveMax(delayMilliSec / 3, 50));
   }
 
   // swap pivot element with the greater element
   setBGColor(arrNode[i + 1], "swap-ele");
   setBGColor(arrNode[heigh], "swap-ele");
 
-  await delay(giveMax(delayMilliSec / 3, 300));
+  await delay(giveMax(delayMilliSec / 3, 50));
 
   // set right-half bg color means that this element is greater than pivot
   setBGColor(arrNode[heigh], "right-half");
