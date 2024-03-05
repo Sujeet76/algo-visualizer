@@ -14,6 +14,10 @@ Algo Visualizer is a web application designed to help users visualize various so
 
 Algo Visualizer is a personal project that was developed to visualize and compare different sorting algorithms. It was created to help me improve my skills in React, JavaScript, and Tailwind CSS while also learning about sorting algorithms.
 
+#### Image Preview
+![InCollage_20240305_145638611](https://github.com/Sujeet76/algo-visualizer/assets/126092124/e3e24d0f-1bc5-4ab3-9c31-d5207e8204fb)
+
+
 ### Features
 
 - Visualize and compare different sorting algorithms, including Bubble Sort, Insertion Sort, Selection Sort, Merge Sort, Quick Sort.
