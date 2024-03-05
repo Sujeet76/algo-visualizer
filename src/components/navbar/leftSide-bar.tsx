@@ -23,10 +23,21 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 import { Button } from "@/components/ui/button";
 
 // constant import
-import { algoOptions, sortingAlgoData } from "@/lib/utils/constants";
+import {
+  sortingAlgoOptions,
+  sortingAlgoData,
+  algoOptions,
+} from "@/lib/utils/constants";
 
 // utils import
 import { cn } from "@/lib/utils";
@@ -41,6 +52,8 @@ const LeftSideBar = () => {
     setSpeed,
     array,
     isSorting,
+    algoName,
+    setAlgoName,
     setArray,
     sortingAlgoName,
     setSortingAlgoName,
@@ -81,6 +94,36 @@ const LeftSideBar = () => {
 
       <ScrollArea className='w-full h-[calc(100dvh-4rem)] border-r dark:border-gray-600 border-gray-300 dark:bg-zinc-900  bg-zinc-100 px-3'>
         <div className='flex flex-col gap-5 mt-6'>
+          {/* select sorting options */}
+          <div className='flex flex-col gap-2'>
+            <Label>Select the algorithm</Label>
+            <Select
+              defaultValue={algoName}
+              // @ts-expect-error we are confirm that val is of AlgoName type not string;
+              onValueChange={(val) => setAlgoName(val)}
+            >
+              <SelectTrigger className='w-full'>
+                <SelectValue placeholder='select algo type' />
+              </SelectTrigger>
+              <SelectContent>
+                {algoOptions.map((val) => (
+                  <SelectItem
+                    key={val}
+                    value={val}
+                    className='font-bold cursor-pointer'
+                  >
+                    {val} algo
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {algoName && (
+              <Badge className='capitalize w-fit'>
+                selected : {algoName} algo
+              </Badge>
+            )}
+          </div>
+
           {/* slider to change the speed */}
           <div className='space-y-4'>
             <Label htmlFor='speed'>Change the speed to animation</Label>
@@ -114,9 +157,9 @@ const LeftSideBar = () => {
             )}
           </div>
 
-          {/* select options */}
+          {/* select sorting options */}
           <div className='flex flex-col gap-2'>
-            <Label>Select the algorithm</Label>
+            <Label>Select sorting algorithm</Label>
             <Popover
               open={open}
               onOpenChange={setOpen}
@@ -132,8 +175,9 @@ const LeftSideBar = () => {
                   className='w-[200px] justify-between'
                 >
                   {sortingAlgoName
-                    ? algoOptions.find((algo) => algo.value === sortingAlgoName)
-                        ?.label
+                    ? sortingAlgoOptions.find(
+                        (algo) => algo.value === sortingAlgoName
+                      )?.label
                     : "Select algo..."}
                   <CaretSortIcon className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                 </Button>
@@ -146,7 +190,7 @@ const LeftSideBar = () => {
                   />
                   <CommandEmpty>No Algo found.</CommandEmpty>
                   <CommandGroup defaultValue={sortingAlgoName}>
-                    {algoOptions.map((algo) => (
+                    {sortingAlgoOptions.map((algo) => (
                       <CommandItem
                         key={algo.value}
                         value={algo.value}

@@ -1,9 +1,10 @@
-import { SortingAlgoType } from "@/types";
+import { AlgoType, SortingAlgoType } from "@/types";
 import { ReactNode, useRef, useState } from "react";
 import { VisualizerContext } from "./visualizer-context";
 import { generateRandomArray } from "@/lib/utils";
 import {
   DEFAULT_ALGO_NAME,
+  DEFAULT_ALGO_TYPE,
   DEFAULT_ARRAY_LENGTH,
   DEFAULT_SPEED,
 } from "@/lib/utils/constants";
@@ -14,6 +15,8 @@ export function VisualizerProvider({ children }: { children: ReactNode }) {
   const [isSorted, setIsSorted] = useState(false);
 
   const ref = useRef<HTMLTextAreaElement | null>(null);
+
+  const [algoName, setAlgoName] = useState<AlgoType>(DEFAULT_ALGO_TYPE);
 
   const [array, setArray] = useState<number[]>(
     generateRandomArray(DEFAULT_ARRAY_LENGTH)
@@ -45,10 +48,12 @@ export function VisualizerProvider({ children }: { children: ReactNode }) {
     children,
     isSorting,
     isSorted,
+    algoName,
     array,
     speed,
     sortingAlgoName,
     requiresReset,
+    setAlgoName,
     setArray,
     setIsSorting,
     setSpeed,

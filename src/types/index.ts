@@ -1,5 +1,8 @@
 import { MutableRefObject, ReactNode } from "react";
 
+// currently only support sorting algo but can be extended to other types of algo like sorting , searching or graph
+export type AlgoType = "sorting" | "searching";
+
 export type SortingAlgoType =
   | "bubble"
   | "insertion"
@@ -34,12 +37,10 @@ export type SortingAlgoInfo = {
   [key in SortingAlgoType]: AlgoInfo;
 };
 
-export type SelectOptionType = {
+export type SelectSortingOptionType = {
   label: string;
   value: SortingAlgoType;
 };
-
-export type AnimationArrayType = [number[], boolean][];
 
 export type ColorInfoType = {
   [key in SortingAlgoType]: {
@@ -52,11 +53,13 @@ export type ColorInfoType = {
 export type VisualizerProviderProps = {
   children: ReactNode;
   sortingAlgoName: SortingAlgoType;
+  algoName: AlgoType;
   isSorted: boolean;
   isSorting: boolean;
   requiresReset: boolean;
   array: number[];
   speed: number[];
+  setAlgoName: (algoType: AlgoType) => void;
   setArray: (array: number[]) => void;
   setIsSorted: (isSorted: boolean) => void;
   setIsSorting: (isSorting: boolean) => void;

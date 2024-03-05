@@ -1,10 +1,17 @@
-import { ColorInfoType, SelectOptionType, SortingAlgoType } from "@/types";
+import {
+  ColorInfoType,
+  SelectSortingOptionType,
+  SortingAlgoType,
+} from "@/types";
 
 export const DEFAULT_ARRAY_LENGTH = 20;
 export const DEFAULT_SPEED = 200;
 export const DEFAULT_ALGO_NAME: SortingAlgoType = "bubble";
+export const DEFAULT_ALGO_TYPE = "sorting";
 
-export const algoOptions: SelectOptionType[] = [
+export const algoOptions = ["sorting"];
+
+export const sortingAlgoOptions: SelectSortingOptionType[] = [
   { label: "Bubble sort", value: "bubble" },
   { label: "Quick sort", value: "quick" },
   { label: "Merge sort", value: "merge" },
